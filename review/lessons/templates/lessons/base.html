@@ -9,6 +9,17 @@
 </head>
 <body>
     <div class="container">
+        <div class="menu">
+            <ul>
+            {% for object in all_categories %}
+                <li><a href ="/category/{{ object.pk }}">{{ object.name }}</a></li>
+
+            {% endfor %}
+                </ul>
+        </div>
+    </div>
+
+    <div class="container">
         {% block content %}
         {% endblock %}
     </div>
