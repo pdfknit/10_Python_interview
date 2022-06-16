@@ -1,0 +1,17 @@
+{% extends 'lessons/base.html'%}
+{% load static %}
+
+{% block content %}
+    <table>
+        <tr>
+            <th>Название</th>
+            <th>Цена</th>
+        </tr>
+        {% for object in products %}
+            <tr>
+                <td>{{ object.name }}</td>
+                <td>{{ object.price }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
