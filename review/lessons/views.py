@@ -1,4 +1,6 @@
+from django.contrib.sites.shortcuts import get_current_site
 from django.shortcuts import render, get_object_or_404
+from django.views.generic import DetailView
 from django.views.generic.list import ListView
 from lessons.models import Product, ProductCategory
 from django.shortcuts import render
@@ -16,10 +18,12 @@ class ProductListView(ListView):
 
 
 def products(request):
+
     products = Product.objects.all()
     data = {
         'products': products,
         'all_categories': all_categories,
+        'site': get_current_site(request=request),
     }
     return render(request, "lessons/goods_list.html", context=data)
 
@@ -33,4 +37,5 @@ def products_in_categories(request, pk):
         'products': products,
         'all_categories': all_categories,
         'categories': categories,
+        'site': get_current_site(request=request),
     })
